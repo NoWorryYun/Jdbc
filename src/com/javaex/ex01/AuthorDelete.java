@@ -5,40 +5,37 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Authorinsert {
+public class AuthorDelete {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		
 		// 0. import java.sql.*;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		//ResultSet rs = null;
+		// ResultSet rs = null;
 		try {
 			// 1. JDBC 드라이버(Oracle) 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");		//오라클 접속
+			Class.forName("oracle.jdbc.driver.OracleDriver"); // 오라클 접속
 			// 2. Connection 얻어오기
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";		//주소
-			conn = DriverManager.getConnection(url, "webdb", "webdb");		//주소 , 아이디 , 패스워드
+			String url = "jdbc:oracle:thin:@localhost:1521:xe"; // 주소
+			conn = DriverManager.getConnection(url, "webdb", "webdb"); // 주소 , 아이디 , 패스워드
 			// 3. SQL문준비/ 바인딩/ 실행
-			
-			//SQL 문 준비
+
+			// SQL 문 준비
 			String query = "";
-			query += " insert into author";
-			query += " values(seq_author_id.nextval, ?, ?)";
+			query += " delete from author";
+			query += " where author_id = ?";
 			System.out.println(query);
-		
-			//바인딩
-			pstmt = conn.prepareStatement(query);	//문자열을 쿼리로 만들기
-			pstmt.setString(1, "기안84");				//query의 ? 위치, 내용 // 순서 중요
-			pstmt.setString(2, "기안동에서 산 84년생");
-			//String str = "insert into author values(seq_author_id.nextval, '강풀', '온라인 만화가 1세대')";
-			
-			
-			//실행
-			int count = pstmt.executeUpdate();			//쿼리문 실행  -->  성공갯수 return
-			
+
+			// 바인딩
+			pstmt = conn.prepareStatement(query); // 문자열을 쿼리로 만들기
+			pstmt.setInt(1, 5); // query의 ? 위치, 내용 // 순서 중요
+			// String str = "insert into author values(seq_author_id.nextval, '강풀', '온라인 만화가
+			// 1세대')";
+
+			// 실행
+			int count = pstmt.executeUpdate(); // 쿼리문 실행 --> 성공갯수 return
+
 			// 4.결과처리
 			System.out.println(count + "건이 등록 되었습니다.");
 		} catch (ClassNotFoundException e) {
@@ -47,13 +44,11 @@ public class Authorinsert {
 			System.out.println("error:" + e);
 		} finally {
 			// 5. 자원정리
-			
+
 			try {
 				/*
-				if (rs != null) {
-					rs.close();
-				}
-				*/
+				 * if (rs != null) { rs.close(); }
+				 */
 				if (pstmt != null) {
 					pstmt.close();
 				}
@@ -63,9 +58,8 @@ public class Authorinsert {
 			} catch (SQLException e) {
 				System.out.println("error:" + e);
 			}
-			
-		}
 
+		}
 	}
 
 }
