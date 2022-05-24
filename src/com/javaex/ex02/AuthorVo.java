@@ -2,6 +2,7 @@ package com.javaex.ex02;
 
 public class AuthorVo {
 
+
 	//필드
 	private int authorId;
 	private String authorName;
@@ -10,7 +11,26 @@ public class AuthorVo {
 	//생성자
 	public AuthorVo() {}
 
+
+	public AuthorVo(int authorId) {
+		super();
+		this.authorId = authorId;
+	}
+
+	
+	public AuthorVo(String authorName, String authorDesc) {
+		super();
+		this.authorName = authorName;
+		this.authorDesc = authorDesc;
+	}
+	
 	public AuthorVo(int authorId, String authorName, String authorDesc) {
+		this.authorId = authorId;
+		this.authorName = authorName;
+		this.authorDesc = authorDesc;
+	}
+	
+	public AuthorVo(String authorName, String authorDesc, int authorId) {
 		this.authorId = authorId;
 		this.authorName = authorName;
 		this.authorDesc = authorDesc;

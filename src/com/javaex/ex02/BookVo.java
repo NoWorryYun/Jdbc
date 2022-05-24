@@ -2,6 +2,10 @@ package com.javaex.ex02;
 
 public class BookVo {
 
+
+
+
+
 	// 필드
 	private int bookId;
 	private String title;
@@ -14,11 +18,46 @@ public class BookVo {
 	public BookVo() {
 	}
 
+	public BookVo(String title, int bookId, String pubs) {
+		super();
+		this.bookId = bookId;
+		this.title = title;
+		this.pubs = pubs;
+		this.pubDate = pubDate;
+	}
+
+
 	public BookVo(int bookId, String title, String pubs, String pubDate) {
 		super();
 		this.bookId = bookId;
 		this.title = title;
 		this.pubs = pubs;
+		this.pubDate = pubDate;
+	}
+
+
+	public BookVo(String title, String pubs, int authorId, String pubDate) {
+		super();
+		this.title = title;
+		this.pubs = pubs;
+		this.authorId = authorId;
+		this.pubDate = pubDate;
+	}
+
+	public BookVo(String title, String pubs, String pubDate, int authorId) {
+		super();
+		this.title = title;
+		this.pubs = pubs;
+		this.authorId = authorId;
+		this.pubDate = pubDate;
+	}
+	
+	public BookVo(int bookId, String title, String pubs, int authorId, String pubDate) {
+		super();
+		this.bookId = bookId;
+		this.title = title;
+		this.pubs = pubs;
+		this.authorId = authorId;
 		this.pubDate = pubDate;
 	}
 
